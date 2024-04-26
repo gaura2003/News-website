@@ -12,103 +12,49 @@
 <body>
     <nav>
         <section class="nav_section_1">
-            <i class="fa-solid fa-bars"><a href="about.html"></a></i>
+            <i class="fa-solid fa-bars" onclick="menu()"></i>
             <img id="icon_image" src="./Assets/image.png" alt="logo image">
             <form id="search-form">
                 <input type="search" name="search" id="search-input" class="search" placeholder="Search...">
-                
             </form>
         </section>
     </nav>
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="Entertainment.html">Entertainment</a></li>
-            <li><a href="Politics.html">Politics</a></li>
-            <li><a href="Sports.html">Sports</a></li>
-            <li><a href="Companies.html">Companies</a></li>
-            <li><a href="Health.html">Health</a></li>
-            <li><a href="Forex.html">Forex</a></li>
-            <li><a href="education.html">Education</a></li>
-            <li><a href="technology.html">Techonology</a></li>
-            <li><a href="science.html">Science</a></li>
-            <li><a href="india new.html">India News</a></li>
+            <li><a href="#" onclick="fetchCategoryNews('general')">Home</a></li>
+            <li><a href="#" onclick="fetchCategoryNews('entertainment')">Entertainment</a></li>
+            <li><a href="#" onclick="fetchCategoryNews('politics')">Politics</a></li>
+            <li><a href="#" onclick="fetchCategoryNews('sports')">Sports</a></li>
+            <li><a href="#" onclick="fetchCategoryNews('business')">Companies</a></li>
+            <li><a href="#" onclick="fetchCategoryNews('health')">Health</a></li>
+            <li><a href="#" onclick="fetchCategoryNews('stocks')">Forex</a></li>
+            <li><a href="#" onclick="fetchCategoryNews('education')">Education</a></li>
+            <li><a href="#" onclick="fetchCategoryNews('technology')">Techonology</a></li>
+            <li><a href="#" onclick="fetchCategoryNews('science')">Science</a></li>
+            <li><a href="#" onclick="fetchCategoryNews('india')">India News</a></li>
         </ul>
+
     </nav>
-
-    <div class="container" id="news-container">
-        <!-- News articles will be displayed here -->
-    </div>
-
-    <script>
-        const form = document.getElementById('search-form');
-        const searchInput = document.getElementById('search-input');
-        const newsContainer = document.getElementById('news-container');
-
-        // Function to fetch top headlines
-        function fetchTopHeadlines() {
-            const apiUrl = 'https://newsapi.org/v2/top-headlines?country=in&from=2024-04-11&to=2021-04-23&apiKey=2919d76cf469494d85494e200eb92a25';
-
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    displayArticles(data.articles);
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
-        }
-
-        // Function to display articles
-        function displayArticles(articles) {
-            newsContainer.innerHTML = ''; // Clear previous articles
-
-            articles.forEach(article => {
-                const articleDiv = document.createElement('div');
-                articleDiv.classList.add('article');
-
-                const title = document.createElement('h2');
-                const titleLink = document.createElement('a');
-                titleLink.href = article.url; // Set link to the full article URL
-                titleLink.textContent = article.title;
-                title.appendChild(titleLink);
-
-                const description = document.createElement('p');
-                description.textContent = article.description;
-
-                const image = document.createElement('img');
-                image.src = article.urlToImage;
-                image.alt = article.title;
-
-                articleDiv.appendChild(title);
-                articleDiv.appendChild(description);
-                articleDiv.appendChild(image);
-
-                newsContainer.appendChild(articleDiv);
-            });
-        }
-
-        // Event listener for form submission
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission
-            const searchTerm = searchInput.value.trim();
-            if (searchTerm !== '') {
-                const apiUrl = `https://newsapi.org/v2/everything?q=${searchTerm}&apiKey=2919d76cf469494d85494e200eb92a25`;
-
-                fetch(apiUrl)
-                    .then(response => response.json())
-                    .then(data => {
-                        displayArticles(data.articles);
-                    })
-                    .catch(error => {
-                        console.error('Error fetching data:', error);
-                    });
-            }
-        });
-
-        // Fetch top headlines when the page loads
-        fetchTopHeadlines();
-    </script>
+     <div class="box">
+        <div class="sidebar" id="drawer">
+            <div class="stock" onclick="stockprice()">Stock Price</div>
+            <div class="containers">
+                <div class="form" id="stock">
+                    <label for="symbol">Enter Stock Symbol:</label>
+                    <input type="text" id="symbol" placeholder="e.g., IBM , AAPL, etc">
+                    <button id="fetchDataBtn">Fetch Data</button>
+                    <div id="dataContainer" class="data-container"></div>
+                </div>
+                
+            </div>
+            
+            <div class="stock" onclick="stockprice()">Stock Price</div>
+        </div>
+        <div class="container" id="news-container">
+            <!-- News articles will be displayed here -->
+        </div>
+     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>

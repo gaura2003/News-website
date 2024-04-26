@@ -135,3 +135,85 @@ a{
 .fa-solid{
     font-size: 30px;
 }
+.box{
+    display: flex;
+    flex-direction: row;
+
+}
+.sidebar{
+    width: 0px;
+    background-color: #fff;
+    animation: drawer 0.3s ease-in;
+}
+#drawer{
+    display: none;
+}
+@keyframes drawer {
+    0%{
+        width: 0px;
+        display: none;
+        
+    }
+    100%{
+        width: 600px;
+        display: block;
+    }
+}
+
+#stock{
+    display: none;
+}
+
+.containers {
+    width: 400px;
+    margin: 5px auto;
+    
+    border-radius: 5px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form {
+    margin-bottom: 20px;
+}
+
+.form label {
+    font-weight: bold;
+}
+
+.form input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.form button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.data-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.data-container ul {
+    display: flex;
+    flex-direction: column;
+}
+.data-container ul li{
+    margin-bottom: 10px;
+}
